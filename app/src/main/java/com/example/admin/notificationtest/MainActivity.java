@@ -35,6 +35,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 builder.setAutoCancel(true);
                 builder.setWhen(System.currentTimeMillis());
                 NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+                Intent intent = new Intent(this, NotificationActivity.class);
+                PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+                builder.setContentIntent(pendingIntent);
+
                 Notification notification = builder.build();
                 manager.notify(1, notification);
                 break;
